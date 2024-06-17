@@ -1,16 +1,20 @@
-name: CI
+    name: CI
 
-on: [push]
+    on: [push]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+    jobs:
+      build:
+        runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-    - name: Run a one-line script
-      run: node -v
+        strategy:
+          matrix:
+            node-version: [10, 12, 14]
+
+        steps:
+        - uses: actions/checkout@v2
+        - name: Setup Node.js
+          uses: actions/setup-node@v2
+          with:
+            node-version: ${{ matrix.node-version }}
+        - name: Run a one-line script
+          run: node -v
