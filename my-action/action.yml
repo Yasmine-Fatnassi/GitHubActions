@@ -1,0 +1,9 @@
+    name: "My Action"
+    description: "A custom GitHub Action"
+    inputs:
+      my-input:
+        description: "An input for the action"
+        required: true
+    runs:
+      using: "node12"
+      main: "index.js"
